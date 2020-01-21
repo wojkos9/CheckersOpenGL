@@ -34,7 +34,7 @@ public class Game {
     private Vector2f mouse;
     private boolean dragging_view = false;
     private boolean timer_active;
-    private int max_time;
+    private int max_time_ms;
     private BoardModel board_model;
 
     public Game(int n_cells, int n_rows, boolean p1_human, boolean p2_human, int wtype, int btype, int time_s, boolean no_animations) {
@@ -42,7 +42,7 @@ public class Game {
         this.n_rows = n_rows;
         white_model_type = wtype;
         black_model_type = btype;
-        max_time = time_s;
+        max_time_ms = time_s * 1000;
         if (no_animations)
             Pawn.animation_time = 0.f;
         else
@@ -194,9 +194,10 @@ public class Game {
             }
             if (timer_active) {
                 time_playing = System.currentTimeMillis() - time0;
-                if (time_playing >= max_time) {
-                    time_playing = max_time;
+                if (time_playing >= max_time_ms) {
+                    time_playing = max_time_ms;
                     stopTimer();
+                    manager.endGame();
                 }
             }
 

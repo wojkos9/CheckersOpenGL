@@ -6,23 +6,30 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 
 public class MainMenu {
-    public MainMenu() {
 
-    }
+    private SpringLayout layout;
+    private JFrame frame;
+    public MainMenu() { }
+
+
+
     public void init() {
-        JFrame frame = new JFrame("Warcaby");
+        frame = new JFrame("Warcaby");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(480, 320);
 
         JPanel panel = new JPanel();
         frame.add(panel);
-        SpringLayout layout = new SpringLayout();
+        layout = new SpringLayout();
         panel.setLayout(layout);
 
+        String[] player_types = new String[] {"człowiek", "komputer"};
+        String[] pawn_types = new String[] {"standardowe", "szachowe", "kolumny"};
+
         JLabel l_player1 = new JLabel("Gracz 1:");
-        JComboBox player1 = new JComboBox<>(new String[] {"człowiek", "komputer"});
+        JComboBox player1 = new JComboBox<>(player_types);
         JLabel l_pawn1 = new JLabel("Pionki:");
-        JComboBox pawn1 = new JComboBox<>(new String[] {"standardowe", "low poly"});
+        JComboBox pawn1 = new JComboBox<>(pawn_types);
 
         panel.add(l_player1);
         panel.add(player1);
@@ -38,9 +45,9 @@ public class MainMenu {
         layout.putConstraint(SpringLayout.SOUTH, pawn1, 0, SpringLayout.SOUTH, player1);
 
         JLabel l_player2 = new JLabel("Gracz 2:");
-        JComboBox player2 = new JComboBox<>(new String[] {"człowiek", "komputer"});
+        JComboBox player2 = new JComboBox<>(player_types);
         JLabel l_pawn2 = new JLabel("Pionki:");
-        JComboBox pawn2 = new JComboBox<>(new String[] {"standardowe", "low poly"});
+        JComboBox pawn2 = new JComboBox<>(pawn_types);
 
         panel.add(l_player2);
         panel.add(player2);

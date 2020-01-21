@@ -45,7 +45,6 @@ public class FontRenderer {
                     i1 = line.indexOf("=", i2);
                     i2 = line.indexOf(" ", i1);
                     int x = Integer.parseInt(line.substring(i1+1, i2));
-                    System.out.print(x+" ");
                     params.put(x);
                 }
                 letters.put(params.get(0), params);
